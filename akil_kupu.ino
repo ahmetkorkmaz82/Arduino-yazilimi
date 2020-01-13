@@ -4,11 +4,22 @@
 #include <Adafruit_TCS34725.h>
 Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_50MS, TCS34725_GAIN_1X);
 #include <LedControl.h>
-
+#include <Adafruit_NeoPixel.h>
+#ifdef __AVR__
+#include <avr/power.h>
+#endif
 int DIN = 11;
 int CS =  12;
 int CLK = 13;
+#define PIN            13
 
+// How many NeoPixels are attached to the Arduino?
+#define NUMPIXELS      8
+
+// When we setup the NeoPixel library, we tell it how many pixels, and which pin to use to send signals.
+// Note that for older NeoPixel strips you might need to change the third parameter--see the strandtest
+// example for more information on possible values.
+Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 
 LedControl lc=LedControl(DIN,CLK,CS,0);
 
@@ -54,6 +65,7 @@ void setup() {
   pinMode(leftsensorpin, INPUT); 
   delay(1000);
   tcs.begin();
+  pixels.begin();
   Serial.begin(9600);
   leftMotor.setMaxSpeed(MAX_SPEED);
   rightMotor.setMaxSpeed(MAX_SPEED);
@@ -206,18 +218,73 @@ if ((r < 0.8) && (g < 1.2) && (b > 1.2)) {
     Serial.println(color);
 }
   void siyahadon(){
+      for(int i=0;i<NUMPIXELS;i++){
+
+    // pixels.Color takes RGB values, from 0,0,0 up to 255,255,255
+    pixels.setPixelColor(i, pixels.Color(0,0,0)); // Moderately bright green color.
+
+    pixels.show(); // This sends the updated pixel color to the hardware.
+
+ 
+
+  }
+  
   Serial.println("t");
   }
   void yesiledon(){
+      for(int i=0;i<NUMPIXELS;i++){
+
+    // pixels.Color takes RGB values, from 0,0,0 up to 255,255,255
+    pixels.setPixelColor(i, pixels.Color(0,100,0)); // Moderately bright green color.
+
+    pixels.show(); // This sends the updated pixel color to the hardware.
+
+ 
+
+  }
+  
   Serial.println("t");
   }
   void kirmiziyadon(){
+      for(int i=0;i<NUMPIXELS;i++){
+
+    // pixels.Color takes RGB values, from 0,0,0 up to 255,255,255
+    pixels.setPixelColor(i, pixels.Color(100,0,0)); // Moderately bright green color.
+
+    pixels.show(); // This sends the updated pixel color to the hardware.
+
+ 
+
+  }
+  
   Serial.println("t");
   }
   void maviyedon(){
+      for(int i=0;i<NUMPIXELS;i++){
+
+    // pixels.Color takes RGB values, from 0,0,0 up to 255,255,255
+    pixels.setPixelColor(i, pixels.Color(0,0,100)); // Moderately bright green color.
+
+    pixels.show(); // This sends the updated pixel color to the hardware.
+
+ 
+
+  }
+  
   Serial.println("t");
   }
   void beyazadon(){
+      for(int i=0;i<NUMPIXELS;i++){
+
+    // pixels.Color takes RGB values, from 0,0,0 up to 255,255,255
+    pixels.setPixelColor(i, pixels.Color(100,100,100)); // Moderately bright green color.
+
+    pixels.show(); // This sends the updated pixel color to the hardware.
+
+ 
+
+  }
+  
   Serial.println("t");
   } 
 
@@ -291,7 +358,7 @@ void loop() {
     case 'Y': 
     read_green(); 
     break;
-    case 'M': 
+    case 'M':
     read_blue(); 
     break;
     case 'Q': 
@@ -329,6 +396,3 @@ void loop() {
   
   }
 }
-
-
-
