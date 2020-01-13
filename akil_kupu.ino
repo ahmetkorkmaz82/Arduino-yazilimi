@@ -11,7 +11,7 @@ Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_50MS, TCS3472
 int DIN = 11;
 int CS =  12;
 int CLK = 13;
-#define PIN            13
+#define PIN A3
 
 // How many NeoPixels are attached to the Arduino?
 #define NUMPIXELS      8
