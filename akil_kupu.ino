@@ -11,7 +11,7 @@ Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_50MS, TCS3472
 int DIN = 11;
 int CS =  12;
 int CLK = 13;
-#define PIN A3
+#define PIN 10
 
 // How many NeoPixels are attached to the Arduino?
 #define NUMPIXELS      8
@@ -38,7 +38,7 @@ float steps_dist = steps_rev / (wheel_dia * pi);
 int frontsensorpin = A0;
 int rightsensorpin = A1;
 int leftsensorpin = A2;
-int engelpin = 10;
+int engelpin = A3;
 AccelStepper rightMotor(AccelStepper::HALF4WIRE, 2,4,3,5, true);
 AccelStepper leftMotor(AccelStepper::HALF4WIRE, 6,8,7,9, true);
 MultiStepper motors;
